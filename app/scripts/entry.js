@@ -4,10 +4,12 @@ import './../styles/main.scss';
 // import a module from another file.
 import React from 'react';
 import {render} from 'react-dom';
+//import {Router, Route HashHistory, Link} from '.react-router';
+import Banner from './components/banner.js'
 
 import App from './app.js';
 
 render(
-  <App/>,
+  <Banner/>,
   document.getElementById('app')
 );
