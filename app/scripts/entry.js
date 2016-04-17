@@ -11,11 +11,11 @@ import $ from 'jquery';
 
 const BandSearchView = React.createClass ({
 	
-	// getInitialState: function () {
-	//  	console.log('getInitialState');
-	//  	console.log(this);
-	// 	return {bandname: bandname};
-	 //},
+	getInitialState: function () {
+	  	console.log('getInitialState');
+	  	console.log(this);
+		return {data: data};
+	 },
 
 	searchBand: function (e) {
 		e.preventDefault();
@@ -27,9 +27,13 @@ const BandSearchView = React.createClass ({
 			type: 'GET',
 			url: url,  
 
-			success: function(data) {
+			success: (data) => {
+					this.setState({
+						bandName: data
+					});
+				
 
-				//this.state.data.map(function(val, i, arr) {
+				this.state.data.map(function(val, i, arr) {
 
 					console.log('im in success');
 					let bandName = data.artists.items[0].name;
@@ -39,9 +43,9 @@ const BandSearchView = React.createClass ({
 					console.log(bandImage);
 
 
-				//}	
+				}	
 
-			},
+			)},
 
 			error: function(err) {
 				console.log(err);  
@@ -59,26 +63,29 @@ const BandSearchView = React.createClass ({
 
 	render: function () {
 		console.log(this);
-	
-	return (
-		<section>
+		
+		let bandList = this.state.data.map(function (value, index, array) {
+			
+			return <BandRow name={value.get('bandName')} image={value.get('bandImage')} />
+
+
+		});
+
+
+		return (
+			<section>
 			<form className='bandsearch' onSubmit={this.searchBand}>
 				<h2 className='instructions'>Please enter an artist to search</h2>
 				<input className='searchstring' type='text' ref='search'/>
 				<button className='btnsearch' type='submit'>Search</button>
 			</form>
-			<div>
-				<div>{this.bandName}</div>
-				<div>{this.bandImage}</div>
-			</div>
-		</section>
+				{bandList}
+			</section> 
 		)
 	}
 });
 
 
-
-
-render(<AppBanner/>, document.querySelector('.app'));
-render(<BandSearchView/>, document.querySelector('.search'));
+render(<AppBanner />, document.querySelector('.search')); 
+render(<BandSearchView />, document.querySelector('.search'));
 
