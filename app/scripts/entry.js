@@ -14,6 +14,7 @@ const BandSearchView = React.createClass ({
 	getInitialState: function () {
 	  	console.log('getInitialState');
 	  	console.log(this);
+	  	this.setState({data: []});
 		return {data: data};
 	 },
 
@@ -33,7 +34,7 @@ const BandSearchView = React.createClass ({
 					});
 				
 
-				this.state.data.map(function(val, i, arr) {
+					this.state.data.map(function(val, i, arr) {
 
 					console.log('im in success');
 					let bandName = data.artists.items[0].name;
@@ -86,6 +87,6 @@ const BandSearchView = React.createClass ({
 });
 
 
-render(<AppBanner />, document.querySelector('.search')); 
-render(<BandSearchView />, document.querySelector('.search'));
+//render(<bandList />, document.querySelector('.search')); 
+render(<BandSearchView />, document.querySelector('.results'));
 
