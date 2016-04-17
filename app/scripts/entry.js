@@ -10,15 +10,12 @@ import BandRow from './components/BandRow.js';
 import $ from 'jquery';
 
 const BandSearchView = React.createClass ({
-	// componentDidMount: function() {
-	// this.state.BandCollection.fetch();
-	//},
-
+	
 	// getInitialState: function () {
-	// 	console.log('getInitialState');
-	// 	console.log(this);
+	//  	console.log('getInitialState');
+	//  	console.log(this);
 	// 	return {bandname: bandname};
-	// },
+	 //},
 
 	searchBand: function (e) {
 		e.preventDefault();
@@ -32,12 +29,17 @@ const BandSearchView = React.createClass ({
 
 			success: function(data) {
 
+				//this.state.data.map(function(val, i, arr) {
+
 					console.log('im in success');
 					let bandName = data.artists.items[0].name;
 					let bandImage = data.artists.items[0].images[0].url;  
 
 					console.log(bandName);
 					console.log(bandImage);
+
+
+				//}	
 
 			},
 
@@ -59,11 +61,17 @@ const BandSearchView = React.createClass ({
 		console.log(this);
 	
 	return (
-		<form className='bandsearch' onSubmit={this.searchBand}>
-			<h2 className='instructions'>Please enter an artist to search</h2>
-			<input className='searchstring' type='text' ref='search'/>
-			<button className='btnsearch' type='submit'>Search</button>
-		</form>
+		<section>
+			<form className='bandsearch' onSubmit={this.searchBand}>
+				<h2 className='instructions'>Please enter an artist to search</h2>
+				<input className='searchstring' type='text' ref='search'/>
+				<button className='btnsearch' type='submit'>Search</button>
+			</form>
+			<div>
+				<div>{this.bandName}</div>
+				<div>{this.bandImage}</div>
+			</div>
+		</section>
 		)
 	}
 });
