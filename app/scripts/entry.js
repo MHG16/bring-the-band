@@ -6,15 +6,16 @@ import React from 'react';
 import {render} from 'react-dom';
 //import {Router, Route HashHistory, Link} from '.react-router';
 import AppBanner from './components/AppBanner.js'
+import Bands from './collections/BandCollection.js'
 
 
 const BandSearch = React.createClass ({
 	render: function () {
 	return (
-		<section className='bandsearch'>
+		<form className='bandsearch'>
 			<input className='searchstring' type='text'/>
 			<button className='btnsearch' type='submit'>Search</button>
-		</section>
+		</form>
 		)
 	}
 });
