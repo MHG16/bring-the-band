@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Banner = React.createClass({
+const AppBanner = React.createClass({
 	render: function () {
 		return(
-			<h1 class='appTitle'> Bring the Band!</h1>
+			<h1 className='appTitle'> Bring the Band!</h1>
 			)
 	}
 })
@@ -12,7 +12,7 @@ const Banner = React.createClass({
 
 
 
-export default Banner;  
+export default AppBanner;  
 
 
 

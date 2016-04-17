@@ -5,11 +5,23 @@ import './../styles/main.scss';
 import React from 'react';
 import {render} from 'react-dom';
 //import {Router, Route HashHistory, Link} from '.react-router';
-import Banner from './components/banner.js'
+import AppBanner from './components/AppBanner.js'
 
-import App from './app.js';
 
-render(
-  <Banner/>,
-  document.getElementById('app')
-);
+const BandSearch = React.createClass ({
+	render: function () {
+	return (
+		<section className='bandsearch'>
+			<input className='searchstring' type='text'/>
+			<button className='btnsearch' type='submit'>Search</button>
+		</section>
+		)
+	}
+});
+
+
+
+
+render(<AppBanner/>, document.querySelector('.app'));
+render(<BandSearch/>, document.querySelector('.search'));
+
