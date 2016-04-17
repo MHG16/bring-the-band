@@ -9,19 +9,34 @@ import AppBanner from './components/AppBanner.js'
 
 
 const BandSearchView = React.createClass ({
-	componentDidMount: function() {
-	this.state.BandCollection.fetch();
-	},
+	// componentDidMount: function() {
+	// this.state.BandCollection.fetch();
+	//},
 
-	getInitialState: function () {
-		console.log('getInitialState');
-		console.log(this);
-		return {bandname: bandname};
-	},
+	// getInitialState: function () {
+	// 	console.log('getInitialState');
+	// 	console.log(this);
+	// 	return {bandname: bandname};
+	// },
 
 	searchBand: function (e) {
 		e.preventDefault();
-		console.log(this);
+		let url = 'https://api.spotify.com/v1/search?q='+ this.refs.search.value + '&type=artist';
+		console.log(url);
+
+
+		const getBand = {
+			type: 'GET',
+			url: 'https://api.spotify.com/v1/search?q='+ this.refs.search.value + '&type=artist'
+			success: function(data) {
+				var $bandName = $data.artists.items.[0].name;
+				var $bandImage = $data.artists.i
+
+			}
+
+
+		}
+
 
 	},
 
@@ -31,7 +46,7 @@ const BandSearchView = React.createClass ({
 	return (
 		<form className='bandsearch' onSubmit={this.searchBand}>
 			<h2 className='instructions'>Please enter an artist to search</h2>
-			<input className='searchstring' type='text'/>
+			<input className='searchstring' type='text' ref='search'/>
 			<button className='btnsearch' type='submit'>Search</button>
 		</form>
 		)
