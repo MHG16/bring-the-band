@@ -6,7 +6,6 @@ import React from 'react';
 import {render} from 'react-dom';
 //import {Router, Route HashHistory, Link} from '.react-router';
 import AppBanner from './components/AppBanner.js'
-import BandCollection from './collections/BandCollection.js'
 
 
 const BandSearchView = React.createClass ({
@@ -14,12 +13,13 @@ const BandSearchView = React.createClass ({
 	this.state.BandCollection.fetch();
 	},
 
-	getInitialState: function() {
-		return {BandCollection: BandCollection}
-
+	getInitialState: function () {
+		console.log('getInitialState');
+		console.log(this);
+		return {bandname: bandname};
 	},
 
-	addBand: function (e) {
+	searchBand: function (e) {
 		e.preventDefault();
 		console.log(this);
 
@@ -29,7 +29,8 @@ const BandSearchView = React.createClass ({
 		console.log(this);
 	
 	return (
-		<form className='bandsearch' onSubmit={this.addBand}>
+		<form className='bandsearch' onSubmit={this.searchBand}>
+			<h2 className='instructions'>Please enter an artist to search</h2>
 			<input className='searchstring' type='text'/>
 			<button className='btnsearch' type='submit'>Search</button>
 		</form>
