@@ -5,8 +5,9 @@ import './../styles/main.scss';
 import React from 'react';
 import {render} from 'react-dom';
 //import {Router, Route HashHistory, Link} from '.react-router';
-import AppBanner from './components/AppBanner.js'
-
+import AppBanner from './components/AppBanner.js';
+import BandRow from './components/BandRow.js'; 
+import $ from 'jquery';
 
 const BandSearchView = React.createClass ({
 	// componentDidMount: function() {
@@ -27,18 +28,36 @@ const BandSearchView = React.createClass ({
 
 		const getBand = {
 			type: 'GET',
-			url: 'https://api.spotify.com/v1/search?q='+ this.refs.search.value + '&type=artist'
+			url: url,  
+
 			success: function(data) {
-				var $bandName = $data.artists.items.[0].name;
-				var $bandImage = $data.artists.i
 
-			}
+					console.log('im in success');
+					let bandName = data.artists.items.[0].name;
+					
+					// let bandImage = $data.artists.items.[0].images.[3].url;  
 
+					console.log(bandName);
+					// console.log(bandImage);
 
+			},
+
+			error: function(err) {
+				console.log(err);  
+			},
+
+			complete: function() {
+				console.log('I got a response');
+			},
+
+			
 		}
-
-
+		$.ajax(getBand);
 	},
+
+
+
+
 
 	render: function () {
 		console.log(this);

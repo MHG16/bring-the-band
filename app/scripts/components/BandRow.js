@@ -7,6 +7,7 @@ const BandRow = React.createClass({
 			<section>
 				<h2>name: {this.props.name}</h2>
 				<div>Image: {this.props.image}</div>
+				<button type='submit'>Vote</button>
 			</section>
 
 			)
