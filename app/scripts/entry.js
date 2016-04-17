@@ -33,12 +33,11 @@ const BandSearchView = React.createClass ({
 			success: function(data) {
 
 					console.log('im in success');
-					let bandName = data.artists.items.[0].name;
-					
-					// let bandImage = $data.artists.items.[0].images.[3].url;  
+					let bandName = data.artists.items[0].name;
+					let bandImage = data.artists.items[0].images[0].url;  
 
 					console.log(bandName);
-					// console.log(bandImage);
+					console.log(bandImage);
 
 			},
 
@@ -54,9 +53,6 @@ const BandSearchView = React.createClass ({
 		}
 		$.ajax(getBand);
 	},
-
-
-
 
 
 	render: function () {
