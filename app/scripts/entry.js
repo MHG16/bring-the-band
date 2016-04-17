@@ -6,13 +6,30 @@ import React from 'react';
 import {render} from 'react-dom';
 //import {Router, Route HashHistory, Link} from '.react-router';
 import AppBanner from './components/AppBanner.js'
-import Bands from './collections/BandCollection.js'
+import BandCollection from './collections/BandCollection.js'
 
 
-const BandSearch = React.createClass ({
+const BandSearchView = React.createClass ({
+	componentDidMount: function() {
+	this.state.BandCollection.fetch();
+	},
+
+	getInitialState: function() {
+		return {BandCollection: BandCollection}
+
+	},
+
+	addBand: function (e) {
+		e.preventDefault();
+		console.log(this);
+
+	},
+
 	render: function () {
+		console.log(this);
+	
 	return (
-		<form className='bandsearch'>
+		<form className='bandsearch' onSubmit={this.addBand}>
 			<input className='searchstring' type='text'/>
 			<button className='btnsearch' type='submit'>Search</button>
 		</form>
@@ -24,5 +41,5 @@ const BandSearch = React.createClass ({
 
 
 render(<AppBanner/>, document.querySelector('.app'));
-render(<BandSearch/>, document.querySelector('.search'));
+render(<BandSearchView/>, document.querySelector('.search'));
 

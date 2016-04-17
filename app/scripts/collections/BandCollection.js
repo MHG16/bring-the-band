@@ -1,5 +1,5 @@
 import Backbone from 'backbone';
-import BandModel from './models/BandModel.js'
+import BandModel from '../models/BandModel.js'
 
 const BandCollection = Backbone.Collection.extend({
 	model: BandModel,
@@ -13,3 +13,4 @@ const BandCollection = Backbone.Collection.extend({
 let Bands = new BandCollection();
 
 export default Bands;   
+
