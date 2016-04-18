@@ -15,7 +15,7 @@ const BandSearchView = React.createClass ({
 	  	console.log('getInitialState');
 	  	console.log(this);
 	  	this.setState({data: []});
-		return {data: data};
+		return {data};
 	 },
 
 	searchBand: function (e) {
