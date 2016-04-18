@@ -65,10 +65,13 @@ const BandSearchView = React.createClass ({
 	render: function () {
 		console.log(this);
 		
-		let bandList = this.state.bands.map(function (value, index, array) {
+		let bandList = this.state.bands.map((value, index, array)=>{
 			
-			return <BandRow name={this.state.bands.name} />
+			//return <BandRow name={this.state.bands.name} />
+			return (
+				<div>{value.name}</div>
 
+				)
 
 		});
 
