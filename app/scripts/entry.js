@@ -14,8 +14,8 @@ const BandSearchView = React.createClass ({
 	getInitialState: function () {
 	  	console.log('getInitialState');
 	  	console.log(this);
-	  	this.setState({data: []});
-		return {data};
+	  	//this.setState({data: []});
+		return {bands: []};
 	 },
 
 	searchBand: function (e) {
@@ -30,11 +30,11 @@ const BandSearchView = React.createClass ({
 
 			success: (data) => {
 					this.setState({
-						bandName: data
-					});
-				
+						bands: data.artists.items
 
-					this.state.data.map(function(val, i, arr) {
+					}),   		
+
+						//this.state.data.map(function(val, i, arr) {
 
 					console.log('im in success');
 					let bandName = data.artists.items[0].name;
@@ -44,9 +44,9 @@ const BandSearchView = React.createClass ({
 					console.log(bandImage);
 
 
-				}	
+			},	
 
-			)},
+			
 
 			error: function(err) {
 				console.log(err);  
@@ -65,9 +65,9 @@ const BandSearchView = React.createClass ({
 	render: function () {
 		console.log(this);
 		
-		let bandList = this.state.data.map(function (value, index, array) {
+		let bandList = this.state.bands.map(function (value, index, array) {
 			
-			return <BandRow name={value.get('bandName')} image={value.get('bandImage')} />
+			return <BandRow name={this.state.bandName.value} />
 
 
 		});
